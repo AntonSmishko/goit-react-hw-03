@@ -1,5 +1,6 @@
 import { Formik, Form, Field } from 'formik';
 import { nanoid } from 'nanoid';
+import s from './ContactForm.module.css';
 
 const initialValues = {
     username: '',
@@ -17,7 +18,7 @@ const ContactForm = () => {
     return (
         <>
             <Formik initialValues={initialValues} onSubmit={onFormSubmit}>
-                <Form>
+                <Form className={s.wrapper}>
                     <label htmlFor={nameFieldId}>Name</label>
                     <Field type="text" name="username" id={nameFieldId} />
 
