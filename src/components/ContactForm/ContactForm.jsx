@@ -19,12 +19,28 @@ const ContactForm = () => {
         <>
             <Formik initialValues={initialValues} onSubmit={onFormSubmit}>
                 <Form className={s.wrapper}>
-                    <label htmlFor={nameFieldId}>Name</label>
-                    <Field type="text" name="username" id={nameFieldId} />
+                    <label className={s.label} htmlFor={nameFieldId}>
+                        Name
+                    </label>
+                    <Field
+                        className={s.field}
+                        type="text"
+                        name="username"
+                        id={nameFieldId}
+                    />
 
-                    <label htmlFor={numberFieldId}>Number</label>
-                    <Field type="number" name="tel" id={numberFieldId} />
-                    <button type="submit">Add contact</button>
+                    <label className={s.label} htmlFor={numberFieldId}>
+                        Number
+                    </label>
+                    <Field
+                        className={s.field}
+                        type="number"
+                        name="tel"
+                        id={numberFieldId}
+                    />
+                    <button className={s.btn} type="submit">
+                        Add contact
+                    </button>
                 </Form>
             </Formik>
         </>
