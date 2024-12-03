@@ -17,13 +17,19 @@ function App() {
             return prev.filter(contact => contact.id !== contactId);
         });
     };
+
+    const filterContacts = contact.filter(contact => {
+        return contact.name.toLowerCase().includes(filter.toLowerCase());
+    });
+
     return (
         <>
             <div>
                 <h1>Phonebook</h1>
+
                 <ContactForm addContact={addContact} />
-                <SearchBox />
-                <ContactList data={contact} onDelete={onDelete} />
+                <SearchBox value={filter} onFilter={setFilter} />
+                <ContactList data={filterContacts} onDelete={onDelete} />
             </div>
         </>
     );
