@@ -3,14 +3,15 @@ import { nanoid } from 'nanoid';
 import s from './ContactForm.module.css';
 
 const initialValues = {
-    username: '',
-    tel: '',
+    name: '',
+    number: '',
 };
 
-const ContactForm = () => {
+const ContactForm = ({ addContact }) => {
     const onFormSubmit = (values, options) => {
-        console.log(values);
         options.resetForm();
+
+        addContact({ ...values, id: nanoid() });
     };
 
     const nameFieldId = nanoid();
@@ -25,7 +26,7 @@ const ContactForm = () => {
                     <Field
                         className={s.field}
                         type="text"
-                        name="username"
+                        name="name"
                         id={nameFieldId}
                     />
 
@@ -35,7 +36,7 @@ const ContactForm = () => {
                     <Field
                         className={s.field}
                         type="number"
-                        name="tel"
+                        name="number"
                         id={numberFieldId}
                     />
                     <button className={s.btn} type="submit">

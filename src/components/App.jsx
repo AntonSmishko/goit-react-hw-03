@@ -7,12 +7,16 @@ import { useState } from 'react';
 function App() {
     // eslint-disable-next-line no-unused-vars
     const [contact, setContact] = useState(contactData);
+    const [filter, setFilter] = useState('');
 
+    const addContact = newContact => {
+        setContact(prev => [...prev, newContact]);
+    };
     return (
         <>
             <div>
                 <h1>Phonebook</h1>
-                <ContactForm />
+                <ContactForm addContact={addContact} />
                 <SearchBox />
                 <ContactList data={contact} />
             </div>
