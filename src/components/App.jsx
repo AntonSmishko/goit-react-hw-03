@@ -12,13 +12,18 @@ function App() {
     const addContact = newContact => {
         setContact(prev => [...prev, newContact]);
     };
+    const onDelete = contactId => {
+        setContact(prev => {
+            return prev.filter(contact => contact.id !== contactId);
+        });
+    };
     return (
         <>
             <div>
                 <h1>Phonebook</h1>
                 <ContactForm addContact={addContact} />
                 <SearchBox />
-                <ContactList data={contact} />
+                <ContactList data={contact} onDelete={onDelete} />
             </div>
         </>
     );
