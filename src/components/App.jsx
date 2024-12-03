@@ -5,7 +5,6 @@ import contactData from '../assets/contactData.json';
 import { useState } from 'react';
 
 function App() {
-    // eslint-disable-next-line no-unused-vars
     const [contact, setContact] = useState(contactData);
     const [filter, setFilter] = useState('');
 
