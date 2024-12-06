@@ -2,11 +2,17 @@ import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import SearchBox from './SearchBox/SearchBox';
 import contactData from '../assets/contactData.json';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
-    const [contact, setContact] = useState(contactData);
+    const [contact, setContact] = useState(() => {
+        const parsedData = localStorage.getItem('contact');
+        return parsedData ? JSON.parse(parsedData) : contactData;
+    });
     const [filter, setFilter] = useState('');
+    useEffect(() => {
+        localStorage.setItem('contact', JSON.stringify(contact));
+    }, [contact]);
 
     const addContact = newContact => {
         setContact(prev => [...prev, newContact]);
